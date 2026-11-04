@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f2ef">
+  <meta name="description" content="Eman Sultan — Electrical Engineering student focused on digital hardware design and FPGA.">
+  <title>Eman Sultan — Resume &amp; Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fcf9f7;
+      --rose: #ead4d0;
+      --rose-deep: #b87978;
+      --nude: #e8d8ca;
+      --ink: #342d2c;
+      --muted: #766b68;
+      --line: #eadfda;
+      --white: #fffdfc;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 3px solid var(--rose-deep);
+      outline-offset: 4px;
+    }
+
+    .page-shell {
+      width: min(1120px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wordmark {
+      color: var(--rose-deep);
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .site-nav a {
+      position: relative;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+
+    .site-nav a:hover { color: var(--rose-deep); }
+
+    .site-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -4px;
+      left: 0;
+      height: 1px;
+      background: var(--rose-deep);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .site-nav a:hover::after,
+    .site-nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(230px, 0.7fr);
+      align-items: center;
+      gap: 72px;
+      padding: 92px 0 86px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--rose-deep);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2, h3 { line-height: 1.2; }
+
+    h1 {
+      max-width: 650px;
+      margin-bottom: 20px;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.3rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+    }
+
+    h1 span { color: var(--rose-deep); }
+
+    .hero-copy {
+      max-width: 590px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 21px;
+      border: 1px solid var(--rose-deep);
+      border-radius: 999px;
+      background: var(--rose-deep);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition:
+        background 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: var(--rose-deep);
+      box-shadow: 0 8px 20px rgba(120, 74, 73, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .button:active {
+      box-shadow: none;
+      transform: translateY(0);
+    }
+
+    .portrait-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      border: 1px solid #e8d8d1;
+      border-radius: 48% 48% 24px 24px;
+      background: linear-gradient(145deg, #f1dfdc, #e8d8ca);
+    }
+
+    main section {
+      padding: 70px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 24px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+    }
+
+    .section-note {
+      max-width: 370px;
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .about-panel {
+      max-width: 790px;
+      padding: 30px 34px;
+      border-left: 3px solid var(--rose-deep);
+      background: var(--white);
+      color: var(--muted);
+      transition: box-shadow 220ms ease, transform 220ms ease;
+    }
+
+    .about-panel:hover {
+      box-shadow: 0 12px 28px rgba(72, 48, 44, 0.07);
+      transform: translateY(-3px);
+    }
+
+    .about-panel p:last-child { margin-bottom: 0; }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 175px 1fr;
+      gap: 28px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .timeline-item:hover {
+      border-color: var(--rose-deep);
+      transform: translateX(4px);
+    }
+
+    .timeline-item:first-child { border-top: 0; }
+
+    .date {
+      color: var(--rose-deep);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .timeline-item h3, .project-card h3 {
+      margin-bottom: 6px;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+    }
+
+    .place {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .timeline-item p:last-child {
+      max-width: 720px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skill-group {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .skill-group:hover {
+      border-color: var(--rose);
+      box-shadow: 0 10px 24px rgba(72, 48, 44, 0.06);
+      transform: translateY(-3px);
+    }
+
+    .skill-group h3 {
+      margin-bottom: 10px;
+      color: var(--rose-deep);
+      font-size: 0.9rem;
+    }
+
+    .skill-group p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .project-card {
+      min-height: 230px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--rose);
+      box-shadow: 0 12px 28px rgba(72, 48, 44, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .project-number {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--rose-deep);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+    }
+
+    .project-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .contact-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 38px;
+      border-radius: 10px;
+      background: #f2e5e0;
+      transition: box-shadow 220ms ease;
+    }
+
+    .contact-panel:hover {
+      box-shadow: 0 14px 32px rgba(72, 48, 44, 0.08);
+    }
+
+    .motion-enabled .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .motion-enabled .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .contact-panel h2 { margin-bottom: 10px; }
+
+    .contact-panel p {
+      max-width: 520px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 720px) {
+      .page-shell { width: min(100% - 36px, 560px); }
+      .site-header { align-items: flex-start; flex-direction: column; }
+      .site-nav { gap: 14px 20px; }
+      .hero { grid-template-columns: 1fr; gap: 34px; padding: 64px 0; }
+      .portrait-card { min-height: 230px; }
+      main section { padding: 54px 0; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .skill-grid { grid-template-columns: 1fr; }
+      .project-card { min-height: auto; }
+      .contact-panel { align-items: flex-start; flex-direction: column; padding: 28px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page-shell { width: 100%; }
+      .site-nav, .button { display: none; }
+      .hero, main section { padding: 24px 0; }
+      .hero { grid-template-columns: 1fr; }
+      .portrait-card { display: none; }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-panel { padding: 18px; }
+      a { text-decoration: none; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      .motion-enabled .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#home">Eman Sultan</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#volunteering">Volunteering</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="intro-title" style="border-top: 0;">
+        <div>
+          <p class="eyebrow">Resume &amp; portfolio</p>
+          <h1 id="intro-title">Hello, I’m <span>Eman Sultan</span>.</h1>
+          <p class="hero-copy">
+            Electrical Engineering student at the Technion, focused on digital hardware design,
+            SystemVerilog, and FPGA implementation. I’m looking for a student role in digital
+            design, FPGA, or verification.
+          </p>
+          <a class="button" href="#contact">Let’s connect</a>
+        </div>
+        <div class="portrait-card" aria-hidden="true"></div>
+      </section>
+
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A little about me</p>
+            <h2 id="about-title">My story</h2>
+          </div>
+        </div>
+        <div class="about-panel">
+          <p>
+            I’m a third-year Electrical Engineering student at the Technion – Israel Institute
+            of Technology in Haifa. My focus is digital hardware design, with hands-on experience
+            writing SystemVerilog and implementing FPGA projects.
+          </p>
+          <p>
+            I bring a strong foundation in mathematics and physics, along with experience teaching
+            and mentoring students. I’m seeking a student position in digital design, FPGA, or
+            verification.
+          </p>
+        </div>
+      </section>
+
+      <section id="education" aria-labelledby="education-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">What I’ve learned</p>
+            <h2 id="education-title">Education</h2>
+          </div>
+          <p class="section-note">Electrical Engineering studies, with a strong foundation in mathematics and physics.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="date">2024 — Present</div>
+            <div>
+              <h3>B.Sc. in Electrical Engineering</h3>
+              <p class="place">Technion – Israel Institute of Technology · Haifa</p>
+              <p>Third year · GPA: 81.6 · Expected graduation: 2029</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="date">2022</div>
+            <div>
+              <h3>Academy in High School · Linear Algebra 1</h3>
+              <p class="place">The Open University of Israel</p>
+              <p>Final score: 95</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Where I’ve contributed</p>
+            <h2 id="experience-title">Experience</h2>
+          </div>
+          <p class="section-note">Teaching, student support, and academic mentoring.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="date">2026 — Present</div>
+            <div>
+              <h3>Social Mentor</h3>
+              <p class="place">Technion · Equal Opportunities Project</p>
+              <p>Mentor students and support their academic and social integration into university life.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="date">2023 — Present</div>
+            <div>
+              <h3>Instructor &amp; Office Manager</h3>
+              <p class="place">Infinity Institute</p>
+              <p>Teach quantitative and verbal preparation for the psychometric exam, and manage office operations and student scheduling.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="date">2021 — 2024</div>
+            <div>
+              <h3>Mathematics Tutor</h3>
+              <p class="place">Ministry of Education &amp; Private Tutoring</p>
+              <p>Taught 4- and 5-point Bagrut mathematics, including through a national virtual program for students in periphery regions.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">What I work with</p>
+            <h2 id="skills-title">Skills &amp; coursework</h2>
+          </div>
+        </div>
+        <div class="skill-grid">
+          <article class="skill-group">
+            <h3>Digital hardware</h3>
+            <p>Verilog, SystemVerilog, RTL design, logic design, FPGA implementation &amp; simulation, computer architecture</p>
+          </article>
+          <article class="skill-group">
+            <h3>Programming &amp; tools</h3>
+            <p>C · LTspice (circuit simulation &amp; analysis)</p>
+          </article>
+          <article class="skill-group">
+            <h3>Relevant coursework</h3>
+            <p>Verilog &amp; FPGA Lab, Digital Systems &amp; Computer Architecture, Introduction to Computer Science (C), Electric Circuits, Calculus 1–2, Linear Algebra 1–2, Ordinary &amp; Partial Differential Equations, Physics 1–2</p>
+          </article>
+          <article class="skill-group">
+            <h3>Languages</h3>
+            <p>Arabic (native) · Hebrew (fluent) · English (fluent)</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Learning by doing</p>
+            <h2 id="projects-title">Hands-on projects</h2>
+          </div>
+          <p class="section-note">Selected digital hardware and web projects.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <span class="project-number">01</span>
+            <h3>Flappy Bird on FPGA</h3>
+            <p class="place">2026 · SystemVerilog · Technion Lab</p>
+            <p>Implemented a complete, playable Flappy Bird game in SystemVerilog and deployed it on an FPGA development board. Designed the game logic, video output, custom sprites, and backgrounds; verified the full RTL-to-hardware flow.</p>
+          </article>
+          <article class="project-card">
+            <span class="project-number">02</span>
+            <h3>Re7latee – Trips &amp; Events Website</h3>
+            <p class="place">2026 · Personal project · Wix</p>
+            <p>Designed and built a live Arabic-language trips and events website for a client, owning the end-to-end design.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="volunteering" aria-labelledby="volunteering-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Giving back</p>
+            <h2 id="volunteering-title">Volunteering</h2>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="date">2025</div>
+            <div>
+              <h3>“Irteka” – Warm Home</h3>
+              <p class="place">Tira</p>
+              <p>Provided tutoring and daily care for elementary-school children from low socioeconomic backgrounds.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="date">2022 — 2023</div>
+            <div>
+              <h3>Nitzotzot Organization</h3>
+              <p>Taught virtual mathematics classes via Zoom.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div>
+            <p class="eyebrow">Get in touch</p>
+            <h2 id="contact-title">Let’s make something meaningful.</h2>
+            <p>Based in Haifa, Israel. I’d be glad to connect about student opportunities in digital design, FPGA, and verification.</p>
+          </div>
+          <div>
+            <a class="button" href="mailto:eman.sultan@campus.technion.ac.il">Email Eman</a>
+            <p class="place" style="margin: 14px 0 0;">
+              <a href="tel:+972528004286">+972 52-800-4286</a><br>
+              <a href="https://www.linkedin.com/in/eiman-sultan" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Eman Sultan</span>
+      <span>Made with care.</span>
+    </footer>
+  </div>
+  <script>
+    const revealTargets = document.querySelectorAll(
+      ".hero > div, .section-heading, .about-panel, .timeline-item, .skill-group, .project-card, .contact-panel"
+    );
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!prefersReducedMotion && "IntersectionObserver" in window) {
+      revealTargets.forEach((target) => {
+        target.classList.add("reveal");
+      });
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -32px 0px" });
+
+      revealTargets.forEach((target) => {
+        revealObserver.observe(target);
+      });
+      document.documentElement.classList.add("motion-enabled");
+    }
+  </script>
+</body>
+</html>
